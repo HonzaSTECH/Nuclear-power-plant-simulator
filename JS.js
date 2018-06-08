@@ -13,8 +13,8 @@ window.onload = function (){
     var fuelBar = 330;
     var rodsLevel = 0;
     var pumpWattage = 0;
-	var timeBar = 300; //Time in (seconds * 10) = centiseconds
-	var energyBar = 50000; // = total money to make;
+	var timeBar = 30000; //Time in (seconds * 100) = centiseconds		1 minute = 6000 centiseconds
+	var energyBar = 5000; // = total money to make;
     var money = 500;
     var moneyDisplayValue = 0;
     var buyPrompt;
@@ -23,6 +23,10 @@ window.onload = function (){
     var incidentTimer;
     var incidentDuration;
     
+	var timeConst = timeBar;
+	var energyConst = energyBar;
+	energyBar = 0;
+	
     var body = document.body;
     var space = document.getElementById("space");
     
@@ -374,9 +378,10 @@ window.onload = function (){
         }
         
         reactorBar = (reactorBar + ((rodsLevel / 3400) * fuelBar));//1700                                //Calculations
-        if(turbineBar != -1){turbineBar = (turbineBar + (reactorBar * (pumpWattage / 6800)));}        //3400
-        if(turbineBar != -1){reactorBar = (reactorBar - (reactorBar * (pumpWattage / 6800)));}        //3400
+        if(turbineBar != -1){turbineBar = (turbineBar + (reactorBar * (pumpWattage / 6800)));}
+        if(turbineBar != -1){reactorBar = (reactorBar - (reactorBar * (pumpWattage / 6800)));}
         
+		energyBar = (energyBar + (turbineBar / 100));
         fuelBar = (fuelBar - (fuelBar / 10000));                //Kvadratic fuel decresing
         
         if(reactorBar > 0){reactorBar = (reactorBar - 0.025);}           //Spontal cooling
@@ -385,7 +390,7 @@ window.onload = function (){
         if(turbineBar < 0 && turbineBar != -1){turbineBar = 0;}
         if(radioactivityBar > 0){radioactivityBar = (radioactivityBar - 0.0025);}    //Spontal radiation falling
         if(radioactivityBar < 0){radioactivityBar = 0;}
-		if(timeBar > 0){timeBar = (timeBar - 1);} //Time decreasing
+		if(timeBar > 0){timeBar = (timeBar - 1);} 					//Time decreasing
     
         if(turbineBar != -1){money = (money + (turbineBar/100))}
             moneyDisplayValue = Math.round(money);                    //Money collecting
@@ -409,7 +414,8 @@ window.onload = function (){
         rodsLevelDisplay.innerHTML = rodsLevel;
         pumpWattageDisplay.innerHTML = pumpWattage;
         moneyDisplay.innerHTML = moneyDisplayValue;
-		time.style.width = (timeBar + "px");																										//TODO
+		time.style.width = ((445 / timeConst) * timeBar) + "px";
+		totalEnergy.style.width = ((445 / energyConst) * energyBar) + "px";
 /*
             valueR.innerHTML = reactorBar;
             valueT.innerHTML = turbineBar;
