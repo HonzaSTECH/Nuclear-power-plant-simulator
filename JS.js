@@ -1,3 +1,24 @@
+function level(time, energy, money, incidents, upgrades){		//Upgrades: 0 - nothing; 1 = upgrade1; 2 = upgrade2; 4 = upgrade3; 8 = upgrade4; 16 = upgrade5; 32 = upgrade6;		7 = upgrades 1,2,3	;	63 = all upgrades
+	this.time = time;
+	this.energy = energy;
+	this.money = money;
+	this.incidents = incidents;
+	this.upgrades = upgrades;
+}
+
+var levels = new Array(
+	new level(1000000000, 100, 0, false, 0),
+	new level(12000, 500, 0, false, 0),
+	new level(30000, 10000, 7500, false, 1),
+	new level(30000, 20000, 5000, false, 25),
+	new level(60000, 50000, 2500, false, 27),
+	new level(60000, 75000, 3000, false, 31),
+	new level(60000, 90000, 1000, true, 63),
+	new level(90000, 15000, 0, true, 63),
+	new level(120000, 175000, 687425, true, 0),
+	new level(1000000000, 0, 0, true, 63)
+);
+
 var help = confirm("Share your progress in my game in the comments ;-) \nDo you want to read help first? (recommended)");
 
 if (help === true){
