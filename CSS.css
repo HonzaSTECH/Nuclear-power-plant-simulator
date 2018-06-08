@@ -1,0 +1,311 @@
+#space{
+    width: 500px;
+    height: 380px;
+    background-color: #7799AA;
+    border: 3px solid black;
+    position: absolute;
+    top: 3px;
+    display: block;
+}
+#explosion{
+    top: 3px;
+    width: 500px;
+    height: 360px;
+    background-size: 100% 100%;
+    background-image:url("lib/explosion.png");
+    background-repeat: no-repeat;
+    display: none;
+}
+#radioactivity{
+    top: 3px;
+    width: 500px;
+    height: 360px;
+    background-size: 100% 100%;
+    background-image:url("lib/radioactivity.png");
+    background-repeat: no-repeat;
+    display: none;
+}
+#turbineExplosion{
+    top: 3px;
+    width: 500px;
+    height: 360px;
+    background-size: 100% 100%;
+    background-image:url("lib/turbine_explosion.png");
+    background-repeat: no-repeat;
+    display: none;
+}
+#textBarsBackground{
+    width: 155px;
+    height: 100px;
+    background: #9999BB;
+    position: absolute;
+    top:10px;
+    left:10px;
+}
+#barsBackground{
+    width: 330px;
+    height: 100px;
+    background:-webkit-linear-gradient(left, #888888,green,yellow,gold,red,#770000);
+    position: absolute;
+    top:10px;
+    left:165px;
+}
+#bars{
+    width: 300px;
+    height: 80px;
+    background: #9999BB;
+	border: solid black 1px;
+    position: absolute;
+    top:20px;
+    left:165px;
+}
+#bar1 {
+    width: 0px;
+    height: 19px;
+    background: #DD4444;
+	border: solid black 1px;
+    position: absolute;
+    top: 20px;
+    left: 165px;
+}
+#bar2 {
+    width: 0px;
+    height: 19px;
+    background: #FFCC22;
+	border: solid black 1px;
+    position: absolute;
+    top: 40px;
+    left: 165px;
+}
+#bar3 {
+    width: 0px;
+    height: 19px;
+    background: #55CC55;
+	border: solid black 1px;
+    position: absolute;
+    top: 60px;
+    left: 165px;
+}
+#bar4 {
+    width: 330px;
+    height: 19px;
+    background: #6666FF;
+	border: solid black 1px;
+    position: absolute;
+    top: 80px;
+    left: 165px;
+}
+#bar5 {
+    width: 445px;
+    height:9px;
+    background: #444444;
+	border: solid black 1px;
+    position: absolute;
+    top: 350px;
+    left: 50px;
+}
+#bar6 {
+    width: 0px;
+    height:9px;
+    background: #BBBBBB;
+	border: solid black 1px;
+    position: absolute;
+    top: 360px;
+    left: 50px;
+}
+#text1 {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+}
+#text2 {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+}
+#text3 {
+    position: absolute;
+    top: 60px;
+    left: 10px;
+}
+#text4 {
+    position: absolute;
+    top: 80px;
+    left: 10px;
+}
+#text5 {
+    position: absolute;
+    top: 170px;
+    left: 10px;
+}
+#text6 {
+    position: absolute;
+    top: 190px;
+    left: 10px;
+}
+#text7 {
+    position: absolute;
+    top: 210px;
+    left: 10px;
+}
+#text8 {
+    position: absolute;
+    top: 220px;
+    left: 195px;
+    font-size: 30px;
+    color: #FFCC00;
+}
+#text9 {
+    position: absolute;
+    top: 347px;
+    left: 5px;
+    font-size: 13px;
+    color: #000000;
+}
+#text10 {
+    position: absolute;
+    top: 357px;
+    left: 5px;
+    font-size: 13px;
+    color: #000000;
+}
+#rodsLevel {
+    position: absolute;
+    top: 170px;
+    left: 155px;
+}
+#pumpWattage {
+    position: absolute;
+    top: 190px;
+    left: 155px;
+}
+#money {
+    position: absolute;
+    top: 210px;
+    left: 155px;
+}
+#rodsDown{
+    width: 150px;
+    height: 20px;
+    position: absolute;
+    top: 120px;
+    left: 15px;
+}
+#rodsUp{
+    width: 150px;
+    height: 20px;
+    position: absolute;
+    top: 120px;
+    left: 165px;
+}
+#pumpDown{
+    width: 150px;
+    height: 20px;
+    position: absolute;
+    top: 140px;
+    left: 15px;
+}
+#pumpUp{
+    width: 150px;
+    height: 20px;
+    position: absolute;
+    top: 140px;
+    left: 165px;
+}
+#upgrade1{
+    width: 150px;
+    height: 40px;
+    position: absolute;
+    top: 260px;
+    left: 25px;
+}
+#upgrade2{
+    width: 150px;
+    height: 40px;
+    position: absolute;
+    top: 260px;
+    left: 175px;
+}
+#upgrade3{
+    width: 150px;
+    height: 40px;
+    position: absolute;
+    top: 260px;
+    left: 325px;
+}
+#upgrade4{
+    width: 150px;
+    height: 40px;
+    position: absolute;
+    top: 300px;
+    left: 25px;
+}
+#upgrade5{
+    width: 150px;
+    height: 40px;
+    position: absolute;
+    top: 300px;
+    left: 175px;
+}
+#upgrade6{
+    width: 150px;
+    height: 40px;
+    position: absolute;
+    top: 300px;
+    left: 325px;
+}
+#barstop{
+	background-color: #AAAA00
+	width: 30px;
+	height: 80px;
+	position: absolute;
+	top: 20px;
+	left: 435px;
+}
+#incidentTime{
+    position: absolute;
+    top: 337px;
+    left: 300px;
+    font-size: 20px;
+    text-align: right;
+    color: #FFFF00;
+}
+#cheats{
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    border: 1px solid #668899;
+    background-color: #668899;
+    top: 7px;
+    left: 11px;
+}
+#repairTurbine{
+	width: 150px;
+	height: 20px;
+	position: absolute;
+	top: 40px;
+	left: 260px;
+	display: none;
+}
+/*
+#value1 {
+    position: absolute;
+    top: 300px;
+    left: 160px;
+}
+#value2 {
+    position: absolute;
+    top: 320px;
+    left: 160px;
+}
+#value3 {
+    position: absolute;
+    top: 340px;
+    left: 160px;
+}
+#value4 {
+    position: absolute;
+    top: 360px;
+    left: 160px;
+}
+*/
