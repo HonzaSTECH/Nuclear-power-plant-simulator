@@ -34,7 +34,7 @@ window.onload = function (){
     var fuelBar = 330;
     var rodsLevel = 0;
     var pumpWattage = 0;
-	var timeBar = 30000; //Time in (seconds * 100) = centiseconds		1 minute = 6000 centiseconds
+	var timeBar = 1000; //Time in (seconds * 100) = centiseconds		1 minute = 6000 centiseconds
 	var energyBar = 5000; // = total money to make;
     var money = 500;
     var moneyDisplayValue = 0;
@@ -110,6 +110,7 @@ window.onload = function (){
     var GOexplosion = document.getElementById("explosion");
     var GOturbineexplosion = document.getElementById("turbineExplosion");
     var GOradioactivity = document.getElementById("radioactivity");
+	var GOtimeout = document.getElementById("timeout");
 /*
         var valueR = document.getElementById("value1");
         var valueT = document.getElementById("value2");
@@ -412,7 +413,8 @@ window.onload = function (){
         if(radioactivityBar > 0){radioactivityBar = (radioactivityBar - 0.0025);}    //Spontal radiation falling
         if(radioactivityBar < 0){radioactivityBar = 0;}
 		if(timeBar > 0){timeBar = (timeBar - 1);} 					//Time decreasing
-    
+		if(timeBar < 0){timeBar = 0;}
+	
         if(turbineBar != -1){money = (money + (turbineBar/100))}
             moneyDisplayValue = Math.round(money);                    //Money collecting
 //            console.log(money);
@@ -459,6 +461,12 @@ window.onload = function (){
             GOradioactivity.style.display = "block";
             space.style.display = "none";
             alert("Workers in the powerplant died bacause of high radiation and unmaintained power plant exploded.")
+            clearInterval(timer);
+        }
+		if (timeBar == 0){
+            GOtimeout.style.display = "block";										//TODO
+            space.style.display = "none";
+            alert("You made to little energy in the time limit and you were fired.")
             clearInterval(timer);
         }
     }

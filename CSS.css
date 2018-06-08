@@ -16,6 +16,15 @@
     background-repeat: no-repeat;
     display: none;
 }
+#turbineExplosion{
+    top: 3px;
+    width: 500px;
+    height: 360px;
+    background-size: 100% 100%;
+    background-image:url("lib/turbine_explosion.png");
+    background-repeat: no-repeat;
+    display: none;
+}
 #radioactivity{
     top: 3px;
     width: 500px;
@@ -25,12 +34,12 @@
     background-repeat: no-repeat;
     display: none;
 }
-#turbineExplosion{
+#timeout{
     top: 3px;
     width: 500px;
     height: 360px;
     background-size: 100% 100%;
-    background-image:url("lib/turbine_explosion.png");
+    background-image:url("lib/timeout.png");
     background-repeat: no-repeat;
     display: none;
 }
