@@ -3,74 +3,80 @@
     <head>
         <title>Nuclear power plant simulator</title>
         <link rel="stylesheet" href="CSS.css">
-        <script src=JS.js></script>
+        <!--<script src=JS.js></script>-->
+		<script src=JSupdate.js></script>
     </head>
     <body>
         <div id="space">
-            <div id="textBarsBackground"></div>
-            <div id="barsBackground"></div>
-            <!--
-			<div id="bars"></div>
-			<div id="barstop"></div>
-            -->
-			
-            <div id="text1">Reactor temperature</div>
-            <div id="bar1"></div>
-            <div id="text2">Turbine temperature</div>
-            <div id="bar2"></div>
-            <div id="text3">Radioactivity</div>
-            <div id="bar3"></div>
-            <div id="text4">Fuel</div>
-            <div id="bar4"></div>
-			<div id="text9">Time</div>
-			<div id="bar5"></div>
-			<div id="text10">Energy</div>
-			<div id="bar6"></div>
-            <button id="rodsDown">Control rods down</button>
-            <button id="rodsUp">Control rods up</button>
-            <button id="pumpDown">Slow down the pump</button>
-            <button id="pumpUp">Speed up the pump</button>
-            <div id="text5">Control rods level:</div><div id="rodsLevel">0</div>
-            <div id="text6">Pump wattage:</div><div id="pumpWattage">0</div>
-            <div id="text7">Money</div><div id="money">0</div>
-            <div id="text8">Upgrades</div>
-            <button id="upgrade1">
-            Reload new fuel
-            $1,000
-            </button>
-            <button id="upgrade2">
-            Emergency cooling
-            $5.000
-            </button>
-            <button id="upgrade3">
-            Turbine kill switch
-            $10.000
-            </button>
-            <button id="upgrade4">
-            Control rods drop
-            $3.000
-            </button>
-            <button id="upgrade5">
-            Pump shut down
-            $2.000
-            </button>
-            <button id="upgrade6">
-            Emergency power source
-            $20.000
-            </button>
-            <div id="incidentTime"></div>
-<!--
-            <div id="value1">0</div>
-            <div id="value2">0</div>
-            <div id="value3">0</div>
-            <div id="value4">330</div>
--->
-			<button id="repairTurbine">Repair turbine $2.500</button>
+			<div id="levelSelect"><!--LEVEL SELECTION HTML-->
+				<div id="level1">1</div>
+				<div id="level2">2</div>
+				<div id="level3">3</div>
+				<div id="level4">4</div>
+				<div id="level5">5</div>
+				<div id="level6">6</div>
+				<div id="level7">7</div>
+				<div id="level8">8</div>
+				<div id="level9">9</div>
+				<div id="level10">Free mode</div>
+			</div>
+			<div id="game"><!--GAME HTML-->
+				<div id="textBarsBackground"></div>
+				<div id="barsBackground"></div>
+				
+				<div id="text1">Reactor temperature</div>
+				<div id="bar1"></div>
+				<div id="text2">Turbine temperature</div>
+				<div id="bar2"></div>
+				<div id="text3">Radioactivity</div>
+				<div id="bar3"></div>
+				<div id="text4">Fuel</div>
+				<div id="bar4"></div>
+				<div id="text9">Time</div>
+				<div id="bar5"></div>
+				<div id="text10">Energy</div>
+				<div id="bar6"></div>
+				<button id="rodsDown">Control rods down</button>
+				<button id="rodsUp">Control rods up</button>
+				<button id="pumpDown">Slow down the pump</button>
+				<button id="pumpUp">Speed up the pump</button>
+				<div id="text5">Control rods level:</div><div id="rodsLevel">0</div>
+				<div id="text6">Pump wattage:</div><div id="pumpWattage">0</div>
+				<div id="text7">Money</div><div id="money">0</div>
+				<div id="text8">Upgrades</div>
+				<button id="upgrade1">
+				Reload new fuel
+				$1,000
+				</button>
+				<button id="upgrade2">
+				Emergency cooling
+				$5.000
+				</button>
+				<button id="upgrade3">
+				Turbine kill switch
+				$10.000
+				</button>
+				<button id="upgrade4">
+				Control rods drop
+				$3.000
+				</button>
+				<button id="upgrade5">
+				Pump shut down
+				$2.000
+				</button>
+				<button id="upgrade6">
+				Emergency power source
+				$20.000
+				</button>
+				<div id="incidentTime"></div>
+				<button id="repairTurbine">Repair turbine $2.500</button>
+			</div>
         </div>
-        <div id="explosion"></div>
+		<div id="explosion"></div>
         <div id="turbineExplosion"></div>
         <div id="radioactivity"></div>
 		<div id="timeout"></div>
+		<div id="levelCompleted"></div>
         <div id="cheats"></div>
     </body>
 </html>

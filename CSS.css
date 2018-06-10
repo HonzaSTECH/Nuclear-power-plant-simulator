@@ -7,6 +7,12 @@
     top: 3px;
     display: block;
 }
+#levelSelect{
+	display: none;
+}
+#game{
+	display: none;
+}
 #explosion{
     top: 3px;
     width: 500px;
@@ -40,6 +46,15 @@
     height: 360px;
     background-size: 100% 100%;
     background-image:url("lib/timeout.png");
+    background-repeat: no-repeat;
+    display: none;
+}
+#levelCompleted{
+    top: 3px;
+    width: 500px;
+    height: 360px;
+    background-size: 100% 100%;
+    background-image:url("lib/level_completed.png");
     background-repeat: no-repeat;
     display: none;
 }
@@ -296,25 +311,133 @@
 	left: 260px;
 	display: none;
 }
-/*
-#value1 {
+#level1{
+    width: 83px;
+    height: 48px;
+    background-color:#77FF99;
+    border: 1px solid gray;
+    text-align: center;
+    vertical-align: center;
+    font-size: 45px;
     position: absolute;
-    top: 300px;
-    left: 160px;
+    top: 48px;
+    left: 83px;
+	display: block;
 }
-#value2 {
+#level2{
+    width: 83px;
+    height: 48px;
+    background-color:#77FF99 ;
+    border: 1px solid gray;
+    text-align: center;
+    vertical-align: center;
+    font-size: 45px;
     position: absolute;
-    top: 320px;
-    left: 160px;
+    top: 48px;
+    left: 208px;
+	display: block;
 }
-#value3 {
+#level3{
+    width: 83px;
+    height: 48px;
+    background-color:#77FF99 ;
+    border: 1px solid gray;
+    text-align: center;
+    vertical-align: center;
+    font-size: 45px;
     position: absolute;
-    top: 340px;
-    left: 160px;
+    top: 48px;
+    left: 333px;
+	display: block;
 }
-#value4 {
+#level4{
+    width: 83px;
+    height: 48px;
+    background-color:#77FF99 ;
+    border: 1px solid gray;
+    text-align: center;
+    vertical-align: center;
+    font-size: 45px;
     position: absolute;
-    top: 360px;
-    left: 160px;
+    top: 120px;
+    left: 83px;
+	display: block;
 }
-*/
+#level5{
+    width: 83px;
+    height: 48px;
+    background-color:#BBDD88;
+    border: 1px solid gray;
+    text-align: center;
+    vertical-align: center;
+    font-size: 45px;
+    position: absolute;
+    top: 120px;
+    left: 208px;
+	display: block;
+}
+#level6{
+    width: 83px;
+    height: 48px;
+    background-color:#CC99AA ;
+    border: 1px solid gray;
+    text-align: center;
+    vertical-align: center;
+    font-size: 45px;
+    position: absolute;
+    top: 120px;
+    left: 333px;
+	display: block;
+}
+#level7{
+    width: 83px;
+    height: 48px;
+    background-color:#CC99AA ;
+    border: 1px solid gray;
+    text-align: center;
+    vertical-align: center;
+    font-size: 45px;
+    position: absolute;
+    top: 192px;
+    left: 83px;
+	display: block;
+}
+#level8{
+    width: 83px;
+    height: 48px;
+    background-color:#CC99AA;
+    border: 1px solid gray;
+    text-align: center;
+    vertical-align: center;
+    font-size: 45px;
+    position: absolute;
+    top: 192px;
+    left: 208px;
+	display: block;
+}
+#level9{
+    width: 83px;
+    height: 48px;
+    background-color:#CC99AA ;
+    border: 1px solid gray;
+    text-align: center;
+    vertical-align: center;
+    font-size: 45px;
+    position: absolute;
+    top: 192px;
+    left: 333px;
+	display: block;
+}
+#level10{
+    width: 83px;
+    height: 48px;
+    background-color:#99BBCC;
+    border: 1px solid gray;
+    text-align: center;
+    vertical-align: center;
+    font-size: 20px;
+    position: absolute;
+    top: 264px;
+    left: 208px;
+	display: block;
+}
