@@ -19,6 +19,8 @@ var levels = new Array(
 	new level(1000000000, 0, 0, true, 63)
 );
 
+var unlockedLevels = new Array(true, false, false, false, false, false, false, false, false, false);
+/*--------------------------------------------------------------------------------------------------------------------------------------------------*/
 var help = confirm("Share your progress in my game in the comments ;-) \nDo you want to read help first? (recommended)");
 
 if (help === true){
