@@ -1,3 +1,26 @@
+function level(time, energy, money, incidents, upgrades){		//Upgrades: 0 - nothing; 1 = upgrade1; 2 = upgrade2; 4 = upgrade3; 8 = upgrade4; 16 = upgrade5; 32 = upgrade6;		7 = upgrades 1,2,3	;	63 = all upgrades
+	this.time = time;
+	this.energy = energy;
+	this.money = money;
+	this.incidents = incidents;
+	this.upgrades = upgrades;
+}
+
+var levels = new Array(
+	new level(1000000000, 100, 0, false, 0),
+	new level(12000, 500, 0, false, 0),
+	new level(30000, 10000, 7500, false, 1),
+	new level(30000, 20000, 5000, false, 25),
+	new level(60000, 50000, 2500, false, 27),
+	new level(60000, 75000, 3000, false, 31),
+	new level(60000, 90000, 1000, true, 63),
+	new level(90000, 15000, 0, true, 63),
+	new level(120000, 175000, 687425, true, 0),
+	new level(1000000000, 0, 0, true, 63)
+);
+
+var unlockedLevels = new Array(true, false, false, false, false, false, false, false, false, false);
+/*--------------------------------------------------------------------------------------------------------------------------------------------------*/
 var help = confirm("Share your progress in my game in the comments ;-) \nDo you want to read help first? (recommended)");
 
 if (help === true){
@@ -13,7 +36,7 @@ window.onload = function (){
     var fuelBar = 330;
     var rodsLevel = 0;
     var pumpWattage = 0;
-	var timeBar = 30000; //Time in (seconds * 100) = centiseconds		1 minute = 6000 centiseconds
+	var timeBar = 1000; //Time in (seconds * 100) = centiseconds		1 minute = 6000 centiseconds
 	var energyBar = 5000; // = total money to make;
     var money = 500;
     var moneyDisplayValue = 0;
@@ -89,6 +112,7 @@ window.onload = function (){
     var GOexplosion = document.getElementById("explosion");
     var GOturbineexplosion = document.getElementById("turbineExplosion");
     var GOradioactivity = document.getElementById("radioactivity");
+	var GOtimeout = document.getElementById("timeout");
 /*
         var valueR = document.getElementById("value1");
         var valueT = document.getElementById("value2");
@@ -391,7 +415,8 @@ window.onload = function (){
         if(radioactivityBar > 0){radioactivityBar = (radioactivityBar - 0.0025);}    //Spontal radiation falling
         if(radioactivityBar < 0){radioactivityBar = 0;}
 		if(timeBar > 0){timeBar = (timeBar - 1);} 					//Time decreasing
-    
+		if(timeBar < 0){timeBar = 0;}
+	
         if(turbineBar != -1){money = (money + (turbineBar/100))}
             moneyDisplayValue = Math.round(money);                    //Money collecting
 //            console.log(money);
@@ -438,6 +463,12 @@ window.onload = function (){
             GOradioactivity.style.display = "block";
             space.style.display = "none";
             alert("Workers in the powerplant died bacause of high radiation and unmaintained power plant exploded.")
+            clearInterval(timer);
+        }
+		if (timeBar == 0){
+            GOtimeout.style.display = "block";										//TODO
+            space.style.display = "none";
+            alert("You made to little energy in the time limit and you were fired.")
             clearInterval(timer);
         }
     }
