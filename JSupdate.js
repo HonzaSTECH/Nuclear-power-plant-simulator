@@ -22,6 +22,7 @@ var levels = new Array(
 var currentLevel = 0;
 var unlockedLevel = 1;
 var counter;
+var counting = 0;
 
 window.onload = function (){
 	levelSelect();
@@ -503,30 +504,54 @@ window.onload = function (){
             space.style.display = "none";
             alert("The power plant blew up.");
             clearInterval(timer);
+			var wait = setInterval(count, 1000);
+			counting = 0;
+			while(counting != 3){}
+			levelSelect();
+			return;
         }
         if (turbineBar > 330 && upgrades[1] == false){
             GOturbineexplosion.style.display = "block";
             space.style.display = "none";
             alert("The turbine was destroyed.");
             clearInterval(timer);
+			var wait = setInterval(count, 1000);
+			counting = 0;
+			while(counting != 3){}
+			levelSelect();
+			return;
         }
         if (radioactivityBar > 330){
             GOradioactivity.style.display = "block";
             space.style.display = "none";
             alert("Workers in the powerplant died bacause of high radiation and unmaintained power plant exploded.")
             clearInterval(timer);
+			var wait = setInterval(count, 1000);
+			counting = 0;
+			while(counting != 3){}
+			levelSelect();
+			return;
         }
 		if (timeBar == 0){
             GOtimeout.style.display = "block";
             space.style.display = "none";
             alert("You made to little energy in the time limit and you were fired.")
             clearInterval(timer);
+			var wait = setInterval(count, 1000);
+			counting = 0;
+			while(counting != 3){}
+			levelSelect();
+			return;
         }
 		if (energyBar >= levels[currentLevel - 1].energy){
             LevelCompleted.style.display = "block";
             space.style.display = "none";
             alert("Level completed. Well done!")
             clearInterval(timer);
+			counting = 0;
+			var wait = setInterval(count, 1000);
+			levelSelect();
+			return;
         }
     }
     function countdown(){
@@ -540,5 +565,9 @@ window.onload = function (){
             incidentDisplay.innerHTML = "Power failure " + incidentDuration + " s";
         }
     }
+	function count(){
+		counting++;
+		console.log(counting);
+	}
 	}
 }
