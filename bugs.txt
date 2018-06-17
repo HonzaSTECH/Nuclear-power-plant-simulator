@@ -1,0 +1,2 @@
+- upgrades doesn´t display on levels accessed via level selection menu displayed after completing / failing a level
+- cheats are very unstable. Use them on your own risk
