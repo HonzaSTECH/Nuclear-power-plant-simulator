@@ -8,17 +8,23 @@
     display: block;
 }
 #levelSelect{
+	width: 500px;
+    height: 380px;
 	display: none;
 }
 #game{
+	width: 500px;
+    height: 380px;
 	display: none;
 }
 #gameEnds{
+	width: 500px;
+    height: 380px;
 	display: none;
 }
 #explosion{
     width: 500px;
-    height: 360px;
+    height: 380px;
     background-size: 100% 100%;
     background-image:url("lib/explosion.png");
     background-repeat: no-repeat;
@@ -26,7 +32,7 @@
 }
 #turbineExplosion{
     width: 500px;
-    height: 360px;
+    height: 380px;
     background-size: 100% 100%;
     background-image:url("lib/turbine_explosion.png");
     background-repeat: no-repeat;
@@ -34,7 +40,7 @@
 }
 #radioactivity{
     width: 500px;
-    height: 360px;
+    height: 380px;
     background-size: 100% 100%;
     background-image:url("lib/radioactivity.png");
     background-repeat: no-repeat;
@@ -42,7 +48,7 @@
 }
 #timeout{
     width: 500px;
-    height: 360px;
+    height: 380px;
     background-size: 100% 100%;
     background-image:url("lib/timeout.png");
     background-repeat: no-repeat;
@@ -50,7 +56,7 @@
 }
 #levelCompleted{
     width: 500px;
-    height: 360px;
+    height: 380px;
     background-size: 100% 100%;
     background-image:url("lib/level_completed.png");
     background-repeat: no-repeat;
@@ -306,8 +312,8 @@
 	width: 200px;
 	height: 20px;
 	position: absolute;
-	top: 303px;
-	left: 225px;
+	top: 335px;
+	left: 150px;
 }
 #repairTurbine{
 	width: 150px;

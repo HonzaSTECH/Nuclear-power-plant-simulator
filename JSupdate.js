@@ -20,9 +20,8 @@ var levels = new Array(
 );
 
 var currentLevel = 0;
-var unlockedLevel = 1;
+var unlockedLevel = 6;
 var counter;
-var counting = 0;
 
 window.onload = function (){
 	levelSelect();
@@ -36,48 +35,68 @@ window.onload = function (){
 			document.getElementById("level" + counter).style.backgroundColor = "#CC99AA";
 		}
 		
-		document.getElementById("game").style.display = "none";
+		document.getElementById("gameEnds").style.display = "none";
 		document.getElementById("levelSelect").style.display = "block";
 		
 		document.getElementById("level1").onclick = function lv1(){
-			currentLevel = 1;
-			game();
+			if (unlockedLevel >= 1){
+				currentLevel = 1;
+				game();
+			}
 		}
-		document.getElementById("level2").onclick = function lv1(){
-			currentLevel = 2;
-			game();
+		document.getElementById("level2").onclick = function lv2(){
+			if (unlockedLevel >= 2){
+				currentLevel = 2;
+				game();
+			}
 		}
-		document.getElementById("level3").onclick = function lv1(){
-			currentLevel = 3;
-			game();
+		document.getElementById("level3").onclick = function lv3(){
+			if (unlockedLevel >= 3){
+				currentLevel = 3;
+				game();
+			}
 		}
-		document.getElementById("level4").onclick = function lv1(){
-			currentLevel = 4;
-			game();
+		document.getElementById("level4").onclick = function lv4(){
+			if (unlockedLevel >= 4){
+				currentLevel = 4;
+				game();
+			}
 		}
-		document.getElementById("level5").onclick = function lv1(){
-			currentLevel = 5;
-			game();
+		document.getElementById("level5").onclick = function lv5(){
+			if (unlockedLevel >= 5){
+				currentLevel = 5;
+				game();
+			}
 		}
-		document.getElementById("level6").onclick = function lv1(){
-			currentLevel = 6;
-			game();
+		document.getElementById("level6").onclick = function lv6(){
+			if (unlockedLevel >= 6){
+				currentLevel = 6;
+				game();
+			}
 		}
-		document.getElementById("level7").onclick = function lv1(){
-			currentLevel = 7;
-			game();
+		document.getElementById("level7").onclick = function lv7(){
+			if (unlockedLevel >= 7){
+				currentLevel = 7;
+				game();
+			}
 		}
-		document.getElementById("level8").onclick = function lv1(){
-			currentLevel = 8;
-			game();
+		document.getElementById("level8").onclick = function lv8(){
+			if (unlockedLevel >= 8){
+				currentLevel = 8;
+				game();
+			}
 		}
-		document.getElementById("level9").onclick = function lv1(){
-			currentLevel = 9;
-			game();
+		document.getElementById("level9").onclick = function lv9(){
+			if (unlockedLevel >= 9){
+				currentLevel = 9;
+				game();
+			}
 		}
-		document.getElementById("level10").onclick = function lv1(){
-			currentLevel = 10;
-			game();
+		document.getElementById("level10").onclick = function lv10(){
+			if (unlockedLevel >= 10){
+				currentLevel = 10;
+				game();
+			}
 		}
 	}
 	
@@ -171,11 +190,16 @@ window.onload = function (){
     pumpShutDown.style.top = 140 + "px";
     pumpShutDown.style.left = 315 + "px";
 	
+	var game = document.getElementById("game");
+	var levelSelect = document.getElementById("levelSelect");
     var GOexplosion = document.getElementById("explosion");
     var GOturbineexplosion = document.getElementById("turbineExplosion");
     var GOradioactivity = document.getElementById("radioactivity");
 	var GOtimeout = document.getElementById("timeout");
 	var LevelCompleted = document.getElementById("levelCompleted");
+	var returnButton = document.getElementById("returnButton");
+	var gameEnds = document.getElementById("gameEnds");
+	
     var timer = setInterval(update, 10);
     }
     rodsDown.onclick = function rodsDown(){
@@ -447,6 +471,20 @@ window.onload = function (){
                 alert("Code " + cheatCode + " has not been recognized.")
         }
     }
+	returnButton.onclick = function returnFunc(){
+		console.log("back");
+		for (counter = 1; counter < unlockedLevel; counter++){
+			document.getElementById("level" + counter).style.backgroundColor = "#77FF99";
+		}
+		document.getElementById("level" + unlockedLevel).style.backgroundColor = "#BBDD88";
+		for (counter = unlockedLevel + 1; counter <= 10; counter++){
+			document.getElementById("level" + counter).style.backgroundColor = "#CC99AA";
+		}
+		
+		document.getElementById("gameEnds").style.display = "none";
+		document.getElementById("levelSelect").style.display = "block";
+		return;
+	}
     function update(){
         if(powerFailure == false && levels[currentLevel - 1].incidents == true){incident = Math.floor(Math.random()*6000);}
         if(incident == 0){
@@ -500,58 +538,66 @@ window.onload = function (){
 		totalEnergy.style.width = ((445 / energyConst) * energyBar) + "px";
         
         if (reactorBar > 330 && upgrades[0] == false){                    //Game over testing
-            GOexplosion.style.display = "block";
-            space.style.display = "none";
+            game.style.display = "none";
+			gameEnds.style.display = "block";
+			GOturbineexplosion.style.display = "none";
+			GOradioactivity.style.display = "none";
+			GOtimeout.style.display = "none";
+			LevelCompleted.style.display = "none";
+			GOexplosion.style.display = "block";
+			returnButton.style.display = "block";
             alert("The power plant blew up.");
             clearInterval(timer);
-			var wait = setInterval(count, 1000);
-			counting = 0;
-			while(counting != 3){}
-			levelSelect();
-			return;
         }
         if (turbineBar > 330 && upgrades[1] == false){
-            GOturbineexplosion.style.display = "block";
-            space.style.display = "none";
+            game.style.display = "none";
+			gameEnds.style.display = "block";
+			GOexplosion.style.display = "none";
+			GOradioactivity.style.display = "none";
+			GOtimeout.style.display = "none";
+			LevelCompleted.style.display = "none";
+			GOturbineexplosion.style.display = "block";
+			returnButton.style.display = "block";
             alert("The turbine was destroyed.");
             clearInterval(timer);
-			var wait = setInterval(count, 1000);
-			counting = 0;
-			while(counting != 3){}
-			levelSelect();
-			return;
         }
         if (radioactivityBar > 330){
-            GOradioactivity.style.display = "block";
-            space.style.display = "none";
+            game.style.display = "none";
+			gameEnds.style.display = "block";
+			GOexplosion.style.display = "none";
+			GOturbineexplosion.style.display = "none";
+			GOtimeout.style.display = "none";
+			LevelCompleted.style.display = "none";
+			GOradioactivity.style.display = "block";
+			returnButton.style.display = "block";
             alert("Workers in the powerplant died bacause of high radiation and unmaintained power plant exploded.")
             clearInterval(timer);
-			var wait = setInterval(count, 1000);
-			counting = 0;
-			while(counting != 3){}
-			levelSelect();
-			return;
         }
 		if (timeBar == 0){
-            GOtimeout.style.display = "block";
-            space.style.display = "none";
+            game.style.display = "none";
+			gameEnds.style.display = "block";
+			GOexplosion.style.display = "none";
+			GOturbineexplosion.style.display = "none";
+			GOradioactivity.style.display = "none";
+			LevelCompleted.style.display = "none";
+			GOtimeout.style.display = "block";
+			returnButton.style.display = "block";
             alert("You made to little energy in the time limit and you were fired.")
             clearInterval(timer);
-			var wait = setInterval(count, 1000);
-			counting = 0;
-			while(counting != 3){}
-			levelSelect();
-			return;
         }
 		if (energyBar >= levels[currentLevel - 1].energy){
+			if(currentLevel == unlockedLevel && currentLevel != 10){unlockedLevel++;}
+			game.style.display = "none";
+			gameEnds.style.display = "block";
+			GOexplosion.style.display = "none";
+			GOturbineexplosion.style.display = "none";
+			GOradioactivity.style.display = "none";
+			GOtimeout.style.display = "none";
+			LevelCompleted.style.display = "none";
             LevelCompleted.style.display = "block";
-            space.style.display = "none";
+			returnButton.style.display = "block";
             alert("Level completed. Well done!")
             clearInterval(timer);
-			counting = 0;
-			var wait = setInterval(count, 1000);
-			levelSelect();
-			return;
         }
     }
     function countdown(){
@@ -565,9 +611,5 @@ window.onload = function (){
             incidentDisplay.innerHTML = "Power failure " + incidentDuration + " s";
         }
     }
-	function count(){
-		counting++;
-		console.log(counting);
-	}
 	}
 }
