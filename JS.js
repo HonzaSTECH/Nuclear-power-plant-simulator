@@ -20,7 +20,7 @@ var levels = new Array(
 );
 
 var currentLevel = 0;
-var unlockedLevel = 6;
+var unlockedLevel = 1;
 var counter;
 
 window.onload = function (){
