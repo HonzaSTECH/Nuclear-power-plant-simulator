@@ -1,0 +1,4 @@
+- upgrades doesn´t display on levels accessed via level selection menu displayed after completing / failing a level
+- cheats are very unstable. Use them on your own risk
+- levels need rebalancing
+- levels need some intro descriptions

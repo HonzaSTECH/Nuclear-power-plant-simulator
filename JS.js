@@ -19,33 +19,128 @@ var levels = new Array(
 	new level(1000000000, 0, 0, true, 63)
 );
 
-var unlockedLevels = new Array(true, false, false, false, false, false, false, false, false, false);
-/*--------------------------------------------------------------------------------------------------------------------------------------------------*/
-var help = confirm("Share your progress in my game in the comments ;-) \nDo you want to read help first? (recommended)");
-
-if (help === true){
-    alert("Welcome to our little power plant. Your job will be to make as much electricity as possible. But it's not as easy as it sounds. If the reaction in the reactor gets out of control, the core can meltdown catastophalicly and the power plant explode. The turbine that makes the energy can get overheaten and be destroyed, so you have to take care of it to. So let me teach you some basics about maintainig a nuclear powe plant.")
-    alert("Our nuclear power plant consists of two main parts: a reactor and a turbine. In the reactor there are fuel rods that allow a heat-producing nuclear reaction. This heat is absorbed by the reactor water. You can increase the speed of the reaction by moving the control rods up and down. The lower the control bars, the slower the reaction takes place. When executed completely, the reaction stops. Reactor water is pumped to the heat exchanger by the pump. Here it cools and heats turbine water. You can also control the pump. The higher its wattage, the more heat is transferred from the reactor to the turbine. The amount of heat transferred also depends on the reactor water temperature. The warmer the reactor water, the faster the heat is transmitted. When the turbine water is heated, it rotates the turbine that produces electricity. The warmer the turbine water, the faster the turbine rotates and the more electricity is produced. It is therefore best to keep the turbine temperature at the highest possible safe level. If you make electricity, you earn money. You can buy different safety upgrades for your money or buy new fuel bars. Fuel is constantly being consumed and this slows down the speed the reactor is heated up. First, fuel is consumed quickly, but then consumption slows down. It means that it will never be compleatly empty, but at some point it will exceed the limit when the reactor spontaneously cool down faster then it´s heated up. \nI think you already know everything you need, so let's go!")
-    }
+var currentLevel = 0;
+var unlockedLevel = 6;
+var counter;
 
 window.onload = function (){
-    /*Variable decralations*/{
+	levelSelect();
+	
+	function levelSelect(){
+		for (counter = 1; counter < unlockedLevel; counter++){
+			document.getElementById("level" + counter).style.backgroundColor = "#77FF99";
+		}
+		document.getElementById("level" + unlockedLevel).style.backgroundColor = "#BBDD88";
+		for (counter = unlockedLevel + 1; counter <= 10; counter++){
+			document.getElementById("level" + counter).style.backgroundColor = "#CC99AA";
+		}
+		
+		document.getElementById("gameEnds").style.display = "none";
+		document.getElementById("levelSelect").style.display = "block";
+		
+		document.getElementById("level1").onclick = function lv1(){
+			if (unlockedLevel >= 1){
+				currentLevel = 1;
+				game();
+			}
+		}
+		document.getElementById("level2").onclick = function lv2(){
+			if (unlockedLevel >= 2){
+				currentLevel = 2;
+				game();
+			}
+		}
+		document.getElementById("level3").onclick = function lv3(){
+			if (unlockedLevel >= 3){
+				currentLevel = 3;
+				game();
+			}
+		}
+		document.getElementById("level4").onclick = function lv4(){
+			if (unlockedLevel >= 4){
+				currentLevel = 4;
+				game();
+			}
+		}
+		document.getElementById("level5").onclick = function lv5(){
+			if (unlockedLevel >= 5){
+				currentLevel = 5;
+				game();
+			}
+		}
+		document.getElementById("level6").onclick = function lv6(){
+			if (unlockedLevel >= 6){
+				currentLevel = 6;
+				game();
+			}
+		}
+		document.getElementById("level7").onclick = function lv7(){
+			if (unlockedLevel >= 7){
+				currentLevel = 7;
+				game();
+			}
+		}
+		document.getElementById("level8").onclick = function lv8(){
+			if (unlockedLevel >= 8){
+				currentLevel = 8;
+				game();
+			}
+		}
+		document.getElementById("level9").onclick = function lv9(){
+			if (unlockedLevel >= 9){
+				currentLevel = 9;
+				game();
+			}
+		}
+		document.getElementById("level10").onclick = function lv10(){
+			if (unlockedLevel >= 10){
+				currentLevel = 10;
+				game();
+			}
+		}
+	}
+	
+	function game(){
+		document.getElementById("levelSelect").style.display = "none";
+		document.getElementById("game").style.display = "block";
+		
+	/*Variable decralations*/{
     var reactorBar = 0;
     var turbineBar = 0;
     var radioactivityBar = 0;
     var fuelBar = 330;
     var rodsLevel = 0;
     var pumpWattage = 0;
-	var timeBar = 1000; //Time in (seconds * 100) = centiseconds		1 minute = 6000 centiseconds
-	var energyBar = 5000; // = total money to make;
-    var money = 500;
+	var timeBar = levels[currentLevel - 1].time;		//Time in (seconds * 100) = centiseconds		1 minute = 6000 centiseconds
+	var energyBar = levels[currentLevel - 1].energy; // = total money to make;
+    var money = levels[currentLevel - 1].money;
     var moneyDisplayValue = 0;
     var buyPrompt;
+	var incidents = levels[currentLevel - 1].incidents;
     var incident = 1;
     var powerFailure = false;
     var incidentTimer;
     var incidentDuration;
-    
+	
+	var avalibeUpgrades = new Array(false, false, false, false, false, false);
+	var levelUpgrades = levels[currentLevel - 1].upgrades;
+	
+	if (levelUpgrades % 2 == 1){avalibeUpgrades[0] = true; levelUpgrades -= 1;}
+	if (levelUpgrades % 4 == 2){avalibeUpgrades[1] = true; levelUpgrades -= 2;}
+	if (levelUpgrades % 8 == 4){avalibeUpgrades[2] = true; levelUpgrades -= 4;}
+	if (levelUpgrades % 16 == 8){avalibeUpgrades[3] = true; levelUpgrades -= 8;}
+	if (levelUpgrades % 32 == 16){avalibeUpgrades[4] = true; levelUpgrades -= 16;}
+	if (levelUpgrades % 64 == 32){avalibeUpgrades[5] = true; levelUpgrades -= 32;}
+	
+	if (avalibeUpgrades[0] == false){document.getElementById("upgrade1").style.display = "none";}
+	if (avalibeUpgrades[1] == false){document.getElementById("upgrade2").style.display = "none";}
+	if (avalibeUpgrades[2] == false){document.getElementById("upgrade3").style.display = "none";}
+	if (avalibeUpgrades[3] == false){document.getElementById("upgrade4").style.display = "none";}
+	if (avalibeUpgrades[4] == false){document.getElementById("upgrade5").style.display = "none";}
+	if (avalibeUpgrades[5] == false){document.getElementById("upgrade6").style.display = "none";}
+	
+    var upgrades = new Array(false, false, false, false, false, false);
+	
 	var timeConst = timeBar;
 	var energyConst = energyBar;
 	energyBar = 0;
@@ -75,8 +170,6 @@ window.onload = function (){
     var cheats = document.getElementById("cheats");
     var incidentDisplay = document.getElementById("incidentTime");
     
-    var upgrades = new Array(false, false, false, false, false);
-    
     var controlRodsDrop = document.createElement("button");
     var controlRodsDropText = document.createTextNode("Drop control rods");
     
@@ -96,29 +189,17 @@ window.onload = function (){
     pumpShutDown.style.position = "absolute";
     pumpShutDown.style.top = 140 + "px";
     pumpShutDown.style.left = 315 + "px";
-	/*
-    var repairTurbine = document.createElement("button");
-    var repairTurbineText = document.createTextNode("Repair turbine $2.500");
-    
-    repairTurbine.appendChild(repairTurbineText);
-    repairTurbine.style.width = 150 + "px";
-    repairTurbine.style.height = 20 + "px";
-    repairTurbine.style.position = "absolute";
-    repairTurbine.style.top = 40 + "px";
-    repairTurbine.style.left = 260 + "px";
-    repairTurbine.style.display = "none";
-    space.appendChild(repairTurbine);
-    */
+	
+	var game = document.getElementById("game");
+	var levelSelect = document.getElementById("levelSelect");
     var GOexplosion = document.getElementById("explosion");
     var GOturbineexplosion = document.getElementById("turbineExplosion");
     var GOradioactivity = document.getElementById("radioactivity");
 	var GOtimeout = document.getElementById("timeout");
-/*
-        var valueR = document.getElementById("value1");
-        var valueT = document.getElementById("value2");
-        var valueRa = document.getElementById("value3");
-        var valueF = document.getElementById("value4");
-*/
+	var LevelCompleted = document.getElementById("levelCompleted");
+	var returnButton = document.getElementById("returnButton");
+	var gameEnds = document.getElementById("gameEnds");
+	
     var timer = setInterval(update, 10);
     }
     rodsDown.onclick = function rodsDown(){
@@ -390,8 +471,22 @@ window.onload = function (){
                 alert("Code " + cheatCode + " has not been recognized.")
         }
     }
+	returnButton.onclick = function returnFunc(){
+		console.log("back");
+		for (counter = 1; counter < unlockedLevel; counter++){
+			document.getElementById("level" + counter).style.backgroundColor = "#77FF99";
+		}
+		document.getElementById("level" + unlockedLevel).style.backgroundColor = "#BBDD88";
+		for (counter = unlockedLevel + 1; counter <= 10; counter++){
+			document.getElementById("level" + counter).style.backgroundColor = "#CC99AA";
+		}
+		
+		document.getElementById("gameEnds").style.display = "none";
+		document.getElementById("levelSelect").style.display = "block";
+		return;
+	}
     function update(){
-        if(powerFailure == false){incident = Math.floor(Math.random()*4000);}
+        if(powerFailure == false && levels[currentLevel - 1].incidents == true){incident = Math.floor(Math.random()*6000);}
         if(incident == 0){
             incidentDuration = Math.floor(6+(Math.random()*14));
             powerFailure = true;
@@ -441,34 +536,67 @@ window.onload = function (){
         moneyDisplay.innerHTML = moneyDisplayValue;
 		time.style.width = ((445 / timeConst) * timeBar) + "px";
 		totalEnergy.style.width = ((445 / energyConst) * energyBar) + "px";
-/*
-            valueR.innerHTML = reactorBar;
-            valueT.innerHTML = turbineBar;
-            valueRa.innerHTML = money;
-            valueF.innerHTML = fuelBar;
-*/        
+        
         if (reactorBar > 330 && upgrades[0] == false){                    //Game over testing
-            GOexplosion.style.display = "block";
-            space.style.display = "none";
+            game.style.display = "none";
+			gameEnds.style.display = "block";
+			GOturbineexplosion.style.display = "none";
+			GOradioactivity.style.display = "none";
+			GOtimeout.style.display = "none";
+			LevelCompleted.style.display = "none";
+			GOexplosion.style.display = "block";
+			returnButton.style.display = "block";
             alert("The power plant blew up.");
             clearInterval(timer);
         }
         if (turbineBar > 330 && upgrades[1] == false){
-            GOturbineexplosion.style.display = "block";
-            space.style.display = "none";
+            game.style.display = "none";
+			gameEnds.style.display = "block";
+			GOexplosion.style.display = "none";
+			GOradioactivity.style.display = "none";
+			GOtimeout.style.display = "none";
+			LevelCompleted.style.display = "none";
+			GOturbineexplosion.style.display = "block";
+			returnButton.style.display = "block";
             alert("The turbine was destroyed.");
             clearInterval(timer);
         }
         if (radioactivityBar > 330){
-            GOradioactivity.style.display = "block";
-            space.style.display = "none";
+            game.style.display = "none";
+			gameEnds.style.display = "block";
+			GOexplosion.style.display = "none";
+			GOturbineexplosion.style.display = "none";
+			GOtimeout.style.display = "none";
+			LevelCompleted.style.display = "none";
+			GOradioactivity.style.display = "block";
+			returnButton.style.display = "block";
             alert("Workers in the powerplant died bacause of high radiation and unmaintained power plant exploded.")
             clearInterval(timer);
         }
 		if (timeBar == 0){
-            GOtimeout.style.display = "block";										//TODO
-            space.style.display = "none";
+            game.style.display = "none";
+			gameEnds.style.display = "block";
+			GOexplosion.style.display = "none";
+			GOturbineexplosion.style.display = "none";
+			GOradioactivity.style.display = "none";
+			LevelCompleted.style.display = "none";
+			GOtimeout.style.display = "block";
+			returnButton.style.display = "block";
             alert("You made to little energy in the time limit and you were fired.")
+            clearInterval(timer);
+        }
+		if (energyBar >= levels[currentLevel - 1].energy){
+			if(currentLevel == unlockedLevel && currentLevel != 10){unlockedLevel++;}
+			game.style.display = "none";
+			gameEnds.style.display = "block";
+			GOexplosion.style.display = "none";
+			GOturbineexplosion.style.display = "none";
+			GOradioactivity.style.display = "none";
+			GOtimeout.style.display = "none";
+			LevelCompleted.style.display = "none";
+            LevelCompleted.style.display = "block";
+			returnButton.style.display = "block";
+            alert("Level completed. Well done!")
             clearInterval(timer);
         }
     }
@@ -483,4 +611,5 @@ window.onload = function (){
             incidentDisplay.innerHTML = "Power failure " + incidentDuration + " s";
         }
     }
+	}
 }
